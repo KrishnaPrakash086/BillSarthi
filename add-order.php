@@ -76,7 +76,7 @@ if($_GET['o'] == 'add') {
                             <div id="add-brand-messages"></div>
                             <div class="card-body">
                                 <div class="input-states">
-                                    <form class="form-horizontal" method="POST" action="#" id="createOrderForm">
+                                    <form class="form-horizontal" method="POST" action="php_action/createOrder.php" id="createOrderForm">
 
                                         
                                         <div class="form-group">

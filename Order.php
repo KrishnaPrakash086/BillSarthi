@@ -6,7 +6,11 @@
 
 <?php include('./constant/connect');
  $user=$_SESSION['userId'];
-$sql = "SELECT order_id, order_date, client_name, client_contact, payment_status FROM orders WHERE order_status = 1 AND user_id = '$user'";
+//  echo $user;
+$sql = "SELECT order_id, order_date, client_name, client_contact, payment_status FROM orders";
+
+// $sql = "SELECT order_id, order_date, client_name, client_contact, payment_status FROM orders WHERE order_status = 1 AND user_id = '$user'";
+
 echo $sql;
 $result = $connect->query($sql);
 
