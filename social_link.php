@@ -31,7 +31,7 @@
 
 <div class="social-icon-bar">
     <!-- LinkedIn link -->
-    <a href="https://www.linkedin.com/in/krishna-prakash-8a0493232/" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a> 
+    <a href="https://www.linkedin.com/in/krishnaprakash-profile/" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a> 
 
     <!-- GitHub link -->
     <a href="https://github.com/KrishnaPrakash086/" class="github" target="_blank"><i class="fab fa-github"></i></a>

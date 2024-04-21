@@ -8,11 +8,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="description" content="This Project e-Billing & Invoice System is Developed by Krishna Prakash & Team">
+<meta name="description" content="This Project `BillSarthi` is Developed by Krishna Prakash">
 <meta name="keywords" content="Krishna Prakash.">
 <meta name="author" content="Krishna Prakash">
     
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/uploadImage/Logo/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/uploadImage/Logo/favicon3.png">
      <?php
      
              include('./constant/connect.php');
@@ -20,7 +20,7 @@
              // $result_head_title = $conn->query($sql_head_title);
              // $row_head_title = mysqli_fetch_array($result_head_title);
              ?>
-    <title>e-Billing & Invoice System</title>
+    <title>BillSarthi: Your Invoice, Your Way</title>
 
     <link href="assets/css/lib/chartist/chartist.min.css" rel="stylesheet">
   <link href="assets/css/lib/owl.carousel.min.css" rel="stylesheet" />

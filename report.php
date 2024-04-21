@@ -8,12 +8,6 @@
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-primary">Datewise Report Management</h3> </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">>Datewise Report</li>
-                    </ol>
-                </div>
             </div>
             
             
@@ -98,7 +92,7 @@
                 data: form.serialize(),
                 dataType: 'date',
                 success:function(response) {
-                    var mywindow = window.open('', 'e-Billing & Invoice System', 'height=400,width=600');
+                    var mywindow = window.open('', 'BillSarthi', 'height=400,width=600');
             mywindow.document.write('<html><head><title>Order Report Slip</title>');        
             mywindow.document.write('</head><body>');
             mywindow.document.write(response);

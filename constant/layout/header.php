@@ -13,7 +13,7 @@ include('./constant/check.php');
                     <a class="navbar-brand" href="index.php">
                         
                          
-                        <b><img src="./assets/uploadImage/Logo/logo1.png" style="width: 100%;" alt="homepage" class="dark-logo" style="width:100%;height:auto;"/></b>
+                        <b><img src="./assets/uploadImage/Logo/logo3.png" style="width: 100%;" alt="homepage" class="dark-logo" style="width:100%;height:auto;"/></b>
                        
                     </a>
                 </div>
@@ -41,7 +41,7 @@ include('./constant/check.php');
                                 <ul class="dropdown-user">
                                    <?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
                                      <li><a href="#"><i class="fa fa-key"></i> Changed Password</a></li>
-                                      <li><a href="#"><i class="fa fa-user"></i> Add user</a></li>
+                                      <li><a href="changePassword.php"><i class="fa fa-user"></i> Add user</a></li>
                                      <?php }?>
                                
                                     <li><a href="./constant/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>

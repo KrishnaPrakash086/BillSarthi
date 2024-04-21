@@ -47,7 +47,7 @@ $mail_password = $rr['mail_password'];
 $mail_port = $rr['mail_port'];
 //$m = mail($to,$subject,$msg,$headers);
  require_once('PHPMailer/PHPMailerAutoload.php');
-$mail = new PHPMailer;
+//$mail = new PHPMailer;
 $mail->isSMTP();   
 // 0 = off (for production use)
 // 1 = client messages

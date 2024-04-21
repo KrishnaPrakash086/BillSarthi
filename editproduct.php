@@ -43,7 +43,7 @@ $sql="SELECT * from product where  product_id='".$_GET['id']."'";
 
                                         <fieldset>
                         <h1>Update Photo</h1>
-<div class="changeUsenrameMessages"></div>
+<div class="changeUsernameMessages"></div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <label class="col-sm-3 control-label">Product Image:</label>

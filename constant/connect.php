@@ -4,7 +4,7 @@ $localhost = "localhost";
 $username = "root";
 $password = "";
 $dbname = "store1";
-//$store_url = "http://localhost/phpinventory/";
+$store_url = "http://localhost/phpinventory/";
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);
 // check connection

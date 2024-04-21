@@ -6,7 +6,7 @@
 <?php 
 
 
-$lowStockSql = "SELECT * FROM product WHERE quantity <= 3 AND status = 1";
+$lowStockSql = "SELECT * FROM product WHERE quantity <= 10 AND status = 1";
 $lowStockQuery = $connect->query($lowStockSql);
 $countLowStock = $lowStockQuery->num_rows;
 
@@ -35,13 +35,13 @@ $connect->close();
                    <div class="col-md-4">
                        <div class="card bg-primary p-20">
                            <div class="media widget-ten">
-                               <div class="media-left meida media-middle">
+                               <div class="media-left media media-middle">
                                    <span><i class="ti-book f-s-40"></i></span>
                                </div>
                                <div class="media-body media-text-right">
                                 
                            
-                                   <h2 class="color-white"><?php echo 3 ?></h2>
+                                   <h2 class="color-white"></h2>
                                    <a href="product.php"><p class="m-b-0">Total Product</p></a>
                                </div>
                            </div>
@@ -59,7 +59,7 @@ $connect->close();
                     
                     
                             
-                                    <h2 class="color-white"><?php 0 ?></h2>
+                                    <h2 class="color-white"></h2>
                                      <a href="product.php"><p class="m-b-0">Low Stock</p></a>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ $connect->close();
                               </div>
                               <div class="media-body media-text-right">
                                   
-                          <h2 class="color-white"><?php echo 1 ?></h2>
+                          <h2 class="color-white"></h2>
                                   <a href="Order.php"><p class="m-b-0">Total Order</p></a>
                               </div>
                           </div>
@@ -96,34 +96,7 @@ $connect->close();
         </div> 
         <br/>
 
-        <div class="card" style="background-color:#009688;">
-          <div class="cardHeader">
-            <h1 style="color:white;"><?php if($totalRevenue) {
-                echo $totalRevenue;
-                } else {
-                    echo '0';
-                    } ?></h1>
-          </div>
-
-          <div class="cardContainer">
-            <p style="color:white;">Total Revenue</p>
-          </div>
-        </div> 
-
     </div>
-    <?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
-     <div class="col-md-8">
-<div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">User Wise Order</strong>
-                            </div>
-                            
-                    </div>
-                </div>
-        
-            <?php }?>
-
-                
             </div>
         </div>
     </div>

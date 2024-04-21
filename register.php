@@ -32,15 +32,24 @@ if ($_POST) {
                 // Registration successful
                 ?>
 
-                <div class="popup popup--icon -success js_success-popup popup--visible">
-                    <div class="popup__background"></div>
-                    <div class="popup__content">
-                        <h3 class="popup__content__title">
-                            Success
-                        </h3>
-                        <p>Registration Successful. You can now <a href="login.php">login</a>.</p>
-                    </div>
+                <div class="registration-success">
+                    <h1>Registration Successful</h1>
+                    <p>Click here to <a href="login.php">login</a>.</p>
                 </div>
+                <style>
+                    .registration-success {
+                        background: linear-gradient(135deg, #8a2be2, #4b0082);
+                        color: #fff;
+                        padding: 20px;
+                        text-align: center;
+                        font-size: 30px;
+                        display: block;
+                    }
+
+                    #main-wrapper {
+                        display: none;
+                    }
+                </style>
 
             <?php
         } else {
@@ -68,13 +77,13 @@ if ($_POST) {
             <div class="popup popup--icon -error js_error-popup popup--visible">
                 <div class="popup__background"></div>
                 <div class="popup__content">
-                    <h3 class="popup__content__title">
+                   <center><h3 class="popup__content__title">
                         Error
                     </h3>
-                    <p>Username already exists. Please choose a different username.</p>
+                    <p>Username already exists.</p>
                     <p>
-                        <a href="login.php"><button class="button button--error" data-for="js_error-popup">Close</button></a>
-                    </p>
+                        <a href="login.php"><button class="button button--error" data-for="js_error-popup">Click here for Sign-in</button></a>
+                    </p></center> 
                 </div>
             </div>
 
@@ -93,7 +102,7 @@ if ($_POST) {
                 <div class="col-lg-3">
                     <div class="login-content card">
                         <div class="login-form">
-                            <center><img src="./assets/uploadImage/Logo/logo1.png" style="width: 100%;"></center><br>
+                            <center><img src="./assets/uploadImage/Logo/logo3.png" style="width: 100%;"></center><br>
                             <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="registerForm">
                                 <div class="form-group">
                                     <label lass="col-sm-3 control-label">Username</label>
@@ -114,9 +123,6 @@ if ($_POST) {
             </div>
         </div>
     </div>
-    <center>
-        <footer class="footer1"><b>e-Billing & Invoice System Designed by : Krishna Prakash & Team</b></footer>
-    </center>
 </div>
 
 <script src="./assets/js/lib/jquery/jquery.min.js"></script>

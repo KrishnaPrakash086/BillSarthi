@@ -15,7 +15,7 @@
              include('./constant/connect.php');
              include './social_link.php'; 
              ?>
-            <footer class="footer"><b>&copy; Designed By: Krishna Prakash & Team </b>
+            <footer class="footer"><b>&copy; Developed By: Krishna Prakash</b>
             
             </footer> 
             

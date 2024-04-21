@@ -23,7 +23,6 @@
                                 <li><a href="add-brand.php">Add Brand</a></li>
                            
                                 <li><a href="brand.php">Manage Brand</a></li>
-                                 <li><a href="importbrand.php">Import Brand</a></li>
                             </ul>
                         </li>
                     <?php }?>
@@ -57,7 +56,7 @@
                         </li>
                          
                         <?php if(isset($_SESSION['userId']) && $_SESSION['userId']==1) { ?>
-                         <li><a href="report.php" href="#" aria-expanded="false"><i class="fa fa-print"></i><span class="hide-menu">Reports</span></a></li>
+                         <li><a href="report.php" aria-expanded="false"><i class="fa fa-print"></i><span class="hide-menu">Reports</span></a></li>
                         
 <?php }?>
 

@@ -11,7 +11,6 @@ $sql = "SELECT order_id, order_date, client_name, client_contact, payment_status
 
 // $sql = "SELECT order_id, order_date, client_name, client_contact, payment_status FROM orders WHERE order_status = 1 AND user_id = '$user'";
 
-echo $sql;
 $result = $connect->query($sql);
 
 //echo $sql;exit;
@@ -72,10 +71,10 @@ foreach ($result as $row) {
                                                  echo $paymentStatus;
                                             }
                                             else if($row['payment_status']==2){
-                                                $paymentStatus = "<label class='label label-danger'><h4>Advance Payment</h4></label>";
+                                                $paymentStatus = "<label class='label label-warning'><h4>Some Payment</h4></label>";
                                                 echo $paymentStatus;
                                             }else {
-                                                $paymentStatus = "<label class='label label-warning'><h4>No Payment</h4></label>";
+                                                $paymentStatus = "<label class='label label-danger'><h4>No Payment</h4></label>";
                                                  echo $paymentStatus;
                                                 } // /els
                                             ?></td>

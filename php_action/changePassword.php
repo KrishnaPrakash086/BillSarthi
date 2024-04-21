@@ -2,54 +2,77 @@
 
 require_once 'core.php';
 
-if($_POST) {
+// Check if the request is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Initialize response array
+    $response = array('success' => false, 'message' => '');
 
-	$valid['success'] = array('success' => false, 'messages' => array());
+    // Retrieve and validate user input
+    $currentPassword = $_POST['password'] ?? '';
+    $newPassword = $_POST['npassword'] ?? '';
+    $confirmPassword = $_POST['cpassword'] ?? '';
+    $userId = $_POST['user_id'] ?? '';
 
-	$currentPassword = md5($_POST['password']);
-	//echo $_POST['password'];
-	$newPassword = md5($_POST['npassword']);
-	//echo $_POST['npassword'];
-	$conformPassword = md5($_POST['cpassword']);
-	//echo $_POST['cpassword'];
-	$userId = $_POST['user_id'];
-//echo $userId;
-	$sql ="SELECT * FROM users WHERE user_id = {$userId}";
-	$query = $connect->query($sql);
-	$result = $query->fetch_assoc();
-//echo $sql;
-//echo $result['password'];
-//echo $currentPassword;exit;
-	if($currentPassword == $result['password']) {
+    if (empty($currentPassword) || empty($newPassword) || empty($confirmPassword) || empty($userId)) {
+        $response['message'] = "All fields are required.";
+        echo json_encode($response);
+        exit();
+    }
 
-		if($newPassword == $conformPassword) {
+    if ($newPassword !== $confirmPassword) {
+        $response['message'] = "New password and confirm password do not match.";
+        echo json_encode($response);
+        exit();
+    }
 
-			$updateSql = "UPDATE users SET password = '$newPassword' WHERE user_id = {$userId}";
-			//echo $updateSql;exit;
-			if($connect->query($updateSql) === TRUE) {
-				$valid['success'] = true;
-				$valid['messages'] = "Successfully Updated";
-				header('location:../setting.php');
+    // Fetch the stored password for the user from the database
+    $stmt = $connect->prepare("SELECT password FROM users WHERE user_id = ?");
+    if ($stmt === false) {
+        $response['message'] = "Failed to prepare SQL statement.";
+        echo json_encode($response);
+        exit();
+    }
 
-			} else {
-				$valid['success'] = false;
-				$valid['messages'] = "Error while updating the password";	
-			}
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($storedPassword);
+    $stmt->fetch();
+    $stmt->close();
 
-		} else {
-			$valid['success'] = false;
-			$valid['messages'] = "New password does not match with Conform password";
-		}
+    // Verify the current password
+    if (password_verify($currentPassword, $storedPassword)) {
+        // Hash the new password
+        $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
-	} else {
-		$valid['success'] = false;
-		$valid['messages'] = "Current password is incorrect";
-	}
+        // Update the password in the database
+        $updateStmt = $connect->prepare("UPDATE users SET password = ? WHERE user_id = ?");
+        if ($updateStmt === false) {
+            $response['message'] = "Failed to prepare update statement.";
+            echo json_encode($response);
+            exit();
+        }
 
-	$connect->close();
+        $updateStmt->bind_param("si", $hashedNewPassword, $userId);
 
-	echo json_encode($valid);
+        if ($updateStmt->execute()) {
+            $response['success'] = true;
+            $response['message'] = "Password successfully updated.";
+            // Redirect to the settings page
+            header('Location: ../setting.php');
+        } else {
+            $response['message'] = "Error while updating the password.";
+        }
 
+        $updateStmt->close();
+    } else {
+        $response['message'] = "Current password is incorrect.";
+    }
+
+    // Close the database connection
+    $connect->close();
+
+    // Return the response as JSON
+    echo json_encode($response);
 }
 
 ?>

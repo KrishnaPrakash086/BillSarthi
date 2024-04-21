@@ -275,7 +275,7 @@ if($_GET['o'] == 'add') {
               <select class="form-control" name="paymentStatus" id="paymentStatus">
                 <option value="">~~SELECT~~</option>
                 <option value="1">Full Payment</option>
-                <option value="2">Advance Payment</option>
+                <option value="2">Some Payment</option>
                 <option value="3">No Payment</option>
               </select>
             </div>
@@ -675,7 +675,7 @@ function printOrder(orderId = null) {
       dataType: 'text',
       success:function(response) {
         
-        var mywindow = window.open('', 'e-Billing & Invoice System', 'height=400,width=600');
+        var mywindow = window.open('', 'BillSarthi', 'height=400,width=600');
         mywindow.document.write('<html><head><title>Order Invoice</title>');        
         mywindow.document.write('</head><body>');
         mywindow.document.write(response);
@@ -992,7 +992,7 @@ function removeOrder(orderId = null) {
               '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
             '</div>');
 
-            // remove the mesages
+            // remove the messages
             $(".alert-success").delay(500).show(10, function() {
               $(this).delay(3000).hide(10, function() {
                 $(this).remove();
@@ -1006,7 +1006,7 @@ function removeOrder(orderId = null) {
               '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> '+ response.messages +
             '</div>');
 
-            // remove the mesages
+            // remove the messages
             $(".alert-success").delay(500).show(10, function() {
               $(this).delay(3000).hide(10, function() {
                 $(this).remove();

@@ -312,7 +312,7 @@ if($_GET['o'] == 'add') {
                 } ?>  >Full Payment</option>
                 <option value="2" <?php if($data[12] == 2) {
                   echo "selected";
-                } ?> >Advance Payment</option>
+                } ?> >Some Payment</option>
                 <option value="3" <?php if($data[10] == 3) {
                   echo "selected";
                 } ?> >No Payment</option>

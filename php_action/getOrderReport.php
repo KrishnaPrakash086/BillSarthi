@@ -2,54 +2,124 @@
 
 require_once 'core.php';
 
-if($_POST) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate and sanitize input data
+    $startDate = filter_input(INPUT_POST, 'startDate', FILTER_SANITIZE_STRING);
+    $endDate = filter_input(INPUT_POST, 'endDate', FILTER_SANITIZE_STRING);
 
-	$startDate = $_POST['startDate'];
-//echo $startDate;exit;
-	//$date = DateTime::createFromFormat('m/d/Y',$startDate);
+    // Validate date format
+    if (!validateDate($startDate) || !validateDate($endDate)) {
+        echo "Invalid date format";
+        exit();
+    }
 
-	//$start_date = $date->format("m/d/Y");
+    // Prepare SQL statement using prepared statement
+    $sql = "SELECT * FROM orders WHERE order_date BETWEEN ? AND ? AND order_status = 1";
+    $stmt = $connect->prepare($sql);
+    $stmt->bind_param("ss", $startDate, $endDate);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-//echo $date;exit;
+    if ($result->num_rows > 0) {
+        // Create the HTML output
+        echo '
+        <style>
+            /* Styling for the report */
+            .report-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            .report-table th, .report-table td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: left;
+                border-radius: 5px;
+            }
+            .report-table th {
+                background-color: #f0f0f0;
+                color: black;
+                font-weight: bold;
+            }
+            .print-button {
+                margin-bottom: 10px;
+                padding: 10px 15px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            .print-button:hover {
+                background-color: #45a049;
+            }
+            .report-header {
+                text-align: center;
+                font-weight: bold;
+                font-size: 24px;
+            }
+        </style>
+        
+        <div class="report-header">Order Report ('.$startDate.' to '.$endDate.')</div>
+        <button class="print-button" onclick="window.print()">Print Report</button>
+        
+        <table class="report-table">
+            <tr>
+                <th>Order Date</th>
+                <th>Client Name</th>
+                <th>Contact</th>
+                <th>Paid Amount</th>
+                <th>Due Amount</th>
+            </tr>';
 
-	$endDate = $_POST['endDate'];
-	//$format = DateTime::createFromFormat('m/d/Y',$endDate);
-	//$end_date = $format->format("Y-m-d");
+        // Initialize total amounts
+        $totalPaidAmount = 0;
+        $totalDueAmount = 0;
 
-	$sql = "SELECT * FROM orders WHERE order_date >= '$startDate' AND order_date <= '$endDate' and order_status = 1";
-	$query = $connect->query($sql);
+        // Loop through results and populate table
+        while ($row = $result->fetch_assoc()) {
+            // Format the date and monetary values for better readability
+            $orderDate = date('d-m-Y', strtotime($row['order_date']));
+            $paidAmount = number_format($row['paid'], 2);
+            $dueAmount = number_format($row['due'], 2);
 
-	$table = '
-	<table border="1" cellspacing="0" cellpadding="0" style="width:80%;">
-		<tr>
-			<th>Order Date</th>
-			<th>Client Name</th>
-			<th>Contact</th>
-			<th>Grand Total</th>
-		</tr>
+            echo "
+            <tr>
+                <td>$orderDate</td>
+                <td>{$row['client_name']}</td>
+                <td>{$row['client_contact']}</td>
+                <td>$paidAmount</td>
+                <td>$dueAmount</td>
+            </tr>";
 
-		<tr>';
-		$totalAmount = 0;
-		while ($result = $query->fetch_assoc()) {
-			$table .= '<tr>
-				<td><center>'.$result['order_date'].'</center></td>
-				<td><center>'.$result['client_name'].'</center></td>
-				<td><center>'.$result['client_contact'].'</center></td>
-				<td><center>'.$result['grand_total'].'</center></td>
-			</tr>';	
-			$totalAmount += $result['grand_total'];
-		}
-		$table .= '
-		</tr>
+            // Accumulate total paid and due amounts
+            $totalPaidAmount += $row['paid'];
+            $totalDueAmount += $row['due'];
+        }
 
-		<tr>
-			<td colspan="3"><center>Total Amount</center></td>
-			<td><center>'.$totalAmount.'</center></td>
-		</tr>
-	</table>
-	';	
-	echo $table;
+        // Format total amounts for display
+        $formattedTotalPaid = number_format($totalPaidAmount, 2);
+        $formattedTotalDue = number_format($totalDueAmount, 2);
 
+        // Add footer for total paid and due amounts
+        echo "
+            <tr>
+                <td colspan='3'><strong>Total</strong></td>
+                <td><strong>$formattedTotalPaid</strong></td>
+                <td><strong>$formattedTotalDue</strong></td>
+            </tr>
+        </table>";
+    } else {
+        echo "No records found";
+    }
+} else {
+    echo "Invalid request method";
+}
+
+// Function to validate date format (YYYY-MM-DD)
+function validateDate($date) {
+    return preg_match("/^\d{4}-\d{2}-\d{2}$/", $date);
 }
 
 ?>

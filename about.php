@@ -21,15 +21,15 @@
                 
                 
                 <div class="row">
-                    <div class="col-lg-8" style="    margin-left: 10%;">
+                    <div class="col-lg-8" style=" margin-left: 10%;">
                         <section class="card">
 <div class="card-header user-header alt bg-dark">
 <div class="media">
 <a href="#">
-<img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="assets/uploadImage/Logo/favicon.png">
+<img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="assets/uploadImage/Logo/favicon3.png">
 </a>
 <div class="media-body">
-<h2 class="text-light display-6">Author Name : Krishna Prakash & Teams </h2>
+<h2 class="text-light display-6">Author Name : Krishna Prakash </h2>
 </div>
 </div>
 </div>

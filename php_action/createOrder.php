@@ -13,7 +13,8 @@ if($_POST) {
     $totalAmount = $_POST['totalAmount'];
     $discount = $_POST['discount'];
     $grandTotal = $_POST['grandTotal'];
-    $vat = $_POST['gstn'];
+    $vat = $_POST['vat'];
+    $gstn = $_POST['gstn'];
     $paid = $_POST['paid'];
     $due = $_POST['due'];
     $paymentType = $_POST['paymentType'];
@@ -23,9 +24,8 @@ if($_POST) {
     $user = 1;
 
 
-    $sql = "INSERT INTO orders (user_id, order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status) 
-    VALUES ('$user', '$order_date', '$clientName', '$clientContact', '$subTotal', '$vat', '$totalAmount', '$discount', '$grandTotal', '$paid', '$due', '$paymentType', '$paymentStatus',1)
-    ";
+    $sql = "INSERT INTO orders (user_id, order_date, client_name, client_contact, sub_total, vat, gstn,total_amount, discount, grand_total, paid, due, payment_type, payment_status, payment_place, order_status) 
+    VALUES ('$user', '$order_date', '$clientName', '$clientContact', '$subTotal', '$vat', '$gstn', '$totalAmount', '$discount', '$grandTotal', '$paid', '$due', '$paymentType', '$paymentStatus', '$paymentPlace',1)";
 
 	if($connect->query($sql) === TRUE) {
 	 	$valid['success'] = true;

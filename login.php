@@ -92,7 +92,7 @@ if($_POST) {
     <h3 class="popup__content__title">
       Error 
     </h1>
-    <p>Username doesnot exists</p>
+    <p>Username doesn't exists</p>
     <p>
       <a href="login.php"><button class="button button--error" data-for="js_error-popup">Close</button></a>
     </p>
@@ -115,7 +115,7 @@ if($_POST) {
                     <div class="col-lg-3">
                         <div class="login-content card">
                             <div class="login-form">
-                                <center><img src="./assets/uploadImage/Logo/logo1.png" style="width: 100%;"></center><br>
+                                <center><img src="./assets/uploadImage/Logo/logo3.png" style="width: 100%;"></center><br>
                                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="loginForm">
                                     <div class="form-group">
                                         <label lass="col-sm-3 control-label">Username</label>
@@ -140,7 +140,7 @@ if($_POST) {
                 </div>
             </div>
         </div><center>
- <footer class="footer1"><b>e-Billing & Invoice System Designed by : Krishna Prakash & Team</b>
+ <footer class="footer1"><b>Developed By : Krishna Prakash</b>
             
             </footer> </center>
     </div>

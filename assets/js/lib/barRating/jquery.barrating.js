@@ -1,13 +1,4 @@
-/**
- * jQuery Bar Rating Plugin v1.2.2
- *
- * http://github.com/antennaio/jquery-bar-rating
- *
- * Copyright (c) 2012-2016 Kazik Pietruszewski
- *
- * This plugin is available under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- */
+
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
@@ -360,9 +351,6 @@
                 });
             };
 
-            // somewhat primitive way to remove 300ms click delay on touch devices
-            // for a more advanced solution consider setting `fastClicks` option to false
-            // and using a library such as fastclick (https://github.com/ftlabs/fastclick)
             var fastClicks = function($elements) {
                 $elements.on('touchstart.barrating', function(event) {
                     event.preventDefault();

@@ -79,27 +79,7 @@
 }
 .popup--icon .popup__content {
   padding-top: 130px;
-  /**
-   * Animations on opened popups.
-   *
-   * We need to prepend ".popup--visible" with no space to "&" to match the
-   * an opened popup: ".popup--visible.popup--icon".
-   *
-   * Therefore we need the "at-root" function to break out of nesting as well as the
-   * "selector-append" function to append parent selectors without space.
-   *
-   * Details:
-   *  - https://css-tricks.com/the-sass-ampersand/
-   *  - http://sass-lang.com/documentation/Sass/Script/Functions.html#selector_append-instance_method
-   */
-  /**
-   * Different popup icon styles
-   *
-   * E.g. selector for type question: ".popup--icon.-question" to match class="popup--icon -question"
-   *
-   * To have an easier selector in SCSS we use a little workaround and rearrange the selectors:
-   *  ".-question.popup--icon" is also matching class="popup--icon -question"
-   */
+ 
 }
 .popup--icon .popup__content:before, .popup--icon .popup__content:after {
   position: absolute;
