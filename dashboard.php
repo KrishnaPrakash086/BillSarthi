@@ -60,7 +60,7 @@ $connect->close();
                     
                             
                                     <h2 class="color-white"></h2>
-                                     <a href="product.php"><p class="m-b-0">Low Stock</p></a>
+                                     <a href="product.php?id=10"><p class="m-b-0">Low Stock</p></a>
                                 </div>
                             </div>
                         </div>

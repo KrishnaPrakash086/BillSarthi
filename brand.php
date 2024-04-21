@@ -44,10 +44,11 @@ $result = $connect->query($sql);
                                        </thead>
                                        <tbody>
                                         <?php
+                                        $i = 1;
 foreach ($result as $row) {
     ?>
                                         <tr>
-                                            <td><?php echo $row['brand_id'] ?></td>
+                                            <td><?php echo $i++ ?></td>
                                             <td><?php echo $row['brand_name'] ?></td>
                                             <td><?php  if($row['brand_active']==1)
                                             {

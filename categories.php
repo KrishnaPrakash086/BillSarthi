@@ -41,10 +41,11 @@ $result = $connect->query($sql);
                                        </thead>
                                        <tbody>
                                         <?php
+                                        $i = 1;
 foreach ($result as $row) {
     ?>
                                         <tr>
-                                            <td><?php echo $row['categories_id'] ?></td>
+                                            <td><?php echo $i++ ?></td>
                                             <td><?php echo $row['categories_name'] ?></td>
                                             <td><?php  if($row['categories_active']==1)
                                             {

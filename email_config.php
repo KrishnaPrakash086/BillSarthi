@@ -11,9 +11,7 @@ include('./constant/connect1.php');
 if(isset($_POST["btn_mail"]))
 {
   extract($_POST);
- 
 
-  
    $q1="UPDATE `tbl_email_config` SET `name`='$name',`mail_driver_host`='$mail_driver',`mail_port`='$mail_port' ,`mail_username`='$mail_username',`mail_password`='$mail_password',`mail_encrypt`='$mail_encryption'";
   $q2=$conn->query($q1);
   ?>
@@ -26,7 +24,7 @@ if(isset($_POST["btn_mail"]))
 ?>
 
 <?php
-$que="select *from tbl_email_config";
+$que="select * from tbl_email_config";
 $query=$conn->query($que);
 while($row=mysqli_fetch_array($query))
 {

@@ -7,7 +7,7 @@
 <?php include('./constant/connect');
  $user=$_SESSION['userId'];
 //  echo $user;
-$sql = "SELECT order_id, order_date, client_name, client_contact, payment_status FROM orders";
+$sql = "SELECT order_id, order_date, client_name, client_contact, payment_status FROM orders where order_status = 1";
 
 // $sql = "SELECT order_id, order_date, client_name, client_contact, payment_status FROM orders WHERE order_status = 1 AND user_id = '$user'";
 
@@ -54,12 +54,13 @@ $result = $connect->query($sql);
                                        </thead>
                                        <tbody>
                                         <?php
+                                        $i = 1;
 foreach ($result as $row) {
-     
+    
 
     ?>
                                         <tr>
-                                            <td><?php echo $row['order_id'] ?></td>
+                                            <td><?php echo $i++ ?></td>
                                             <td><?php echo $row['order_date'] ?></td>
                                              <td><?php echo $row['client_name'] ?></td>
                                               <td><?php echo $row['client_contact'] ?></td>

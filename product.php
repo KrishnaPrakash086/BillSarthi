@@ -4,8 +4,11 @@
 <?php include('./constant/layout/sidebar.php');?>   
 <?php include('./constant/connect');
 $sql = "SELECT product_id, product_name,product_image,rate,quantity,brand_id,categories_id,active,status FROM product WHERE status = 1";
-$result = $connect->query($sql);
+
 //echo $sql;exit;
+$quantity = $_GET['id'];
+if ($quantity){$sql = "SELECT product_id, product_name,product_image,rate,quantity,brand_id,categories_id,active,status FROM product WHERE quantity <= 10 AND status = 1";}
+$result = $connect->query($sql);
 
 ?>
        <div class="page-wrapper">
@@ -46,6 +49,7 @@ $result = $connect->query($sql);
                                        </thead>
                                        <tbody>
                                         <?php
+                                        $i = 1;
 foreach ($result as $row) {
     
     $sql="SELECT * from brands where brand_id='".$row['brand_id']."'";
@@ -60,7 +64,7 @@ foreach ($result as $row) {
     
     ?>
                                         <tr>
-                                            <td><?php echo $row['product_id'] ?></td>
+                                            <td><?php echo $i++ ?></td>
                                             <td><img src="assets/myimages/<?php echo $row['product_image'];?>" style="width: 80px; height: 80px;"></td>
                                             <td><?php echo $row['product_name'] ?></td>
                                              <td><?php echo $row['rate'] ?></td>
